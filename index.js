@@ -15,11 +15,11 @@ app.use(express.json());
 // enable CORS 
 app.use(cors());
 
-const COLLECTION_NAME="food_sightings";
+const COLLECTION_NAME="tgc_food_sightings";
 
 // Routes
 async function main(){
-    await MongoUtil.connect(process.env.MONGO_URI, "tgc16_food_sightings");
+    await MongoUtil.connect(process.env.MONGO_URI, "sightings");
 
     app.get('/welcome', function(req,res){
         res.json({
@@ -74,7 +74,7 @@ async function main(){
         }
     })
 
-    app.get('/free_food_sighting', async function(req,res){
+    app.get('/free_food_sightings', async function(req,res){
         // create citeria object (assumption: the user wants everything)
         let criteria = {};
 
@@ -98,7 +98,7 @@ async function main(){
         })
     })
 
-    app.put('/free_food_sighting/:id', async function(req,res){
+    app.put('/free_food_sightings/:id', async function(req,res){
         let {description, food, datetime} = req.body;
         /*
             let description = req.body.description;
