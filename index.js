@@ -15,11 +15,11 @@ app.use(express.json());
 // enable CORS 
 app.use(cors());
 
-const COLLECTION_NAME="tgc_food_sightings";
+const COLLECTION_NAME="sightings";
 
 // Routes
 async function main(){
-    await MongoUtil.connect(process.env.MONGO_URI, "sightings");
+    await MongoUtil.connect(process.env.MONGO_URI, "tgc_food_sightings");
 
     app.get('/welcome', function(req,res){
         res.json({
